@@ -1,7 +1,8 @@
-package com.chatcore.coderswag
+package com.chatcore.coderswag.controllers
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.chatcore.coderswag.R
 
 class MainActivity : AppCompatActivity() {
 
