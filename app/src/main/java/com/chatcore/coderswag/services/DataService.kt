@@ -9,6 +9,18 @@ object DataService {
         Category("SHIRTS", "shirtimage"),
         Category("HOODIES", "hoodieimage"),
         Category("HATS", "hatimage"),
+        Category("DIGITAL", "digitalgoodsimage"),
+        Category("SHIRTS", "shirtimage"),
+        Category("HOODIES", "hoodieimage"),
+        Category("HATS", "hatimage"),
+        Category("DIGITAL", "digitalgoodsimage"),
+        Category("SHIRTS", "shirtimage"),
+        Category("HOODIES", "hoodieimage"),
+        Category("HATS", "hatimage"),
+        Category("DIGITAL", "digitalgoodsimage"),
+        Category("SHIRTS", "shirtimage"),
+        Category("HOODIES", "hoodieimage"),
+        Category("HATS", "hatimage"),
         Category("DIGITAL", "digitalgoodsimage")
     )
 
@@ -34,8 +46,6 @@ object DataService {
         Product("Kickflip Studios", "$18", "shirt05")
 
     )
-
-
 
 
 }
