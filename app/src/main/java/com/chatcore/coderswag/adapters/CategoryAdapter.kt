@@ -10,24 +10,34 @@ import android.widget.TextView
 import com.chatcore.coderswag.R
 import com.chatcore.coderswag.models.Category
 
-class CategoryAdapter(context:Context, categories: List<Category>) : BaseAdapter() {
+class CategoryAdapter(context: Context, categories: List<Category>) : BaseAdapter() {
 
     val context = context
     val categories = categories
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val categoryView : View
+        val categoryView: View
+        var holder: ViewHolder
 
-        categoryView = LayoutInflater.from(context).inflate(R.layout.category_list_item, null)
-        val categoryImg = categoryView.findViewById<ImageView>(R.id.categoryImg)
-        val categoryTxt = categoryView.findViewById<TextView>(R.id.categoryTxt)
+        if (convertView == null) {
+            categoryView = LayoutInflater.from(context).inflate(R.layout.category_list_item, null)
 
+            holder = ViewHolder()
+            holder.img = categoryView.findViewById<ImageView>(R.id.categoryImg)
+            holder.txt = categoryView.findViewById<TextView>(R.id.categoryTxt)
+
+            categoryView.tag = holder
+        } else {
+            holder = convertView.tag as ViewHolder
+            categoryView = convertView
+        }
 
         val category = categories.get(position)
-        categoryTxt.text = category.title
+        holder.txt?.text = category.title
 
-        val resourceId = context.resources.getIdentifier(category.image, "drawable", context.packageName)
-        categoryImg.setImageResource(resourceId)
+        val resourceId =
+            context.resources.getIdentifier(category.image, "drawable", context.packageName)
+        holder.img?.setImageResource(resourceId)
 
         return categoryView
     }
@@ -42,5 +52,12 @@ class CategoryAdapter(context:Context, categories: List<Category>) : BaseAdapter
 
     override fun getCount(): Int {
         return categories.count()
+    }
+
+    //View holder
+    private class ViewHolder {
+        var img: ImageView? = null
+        var txt: TextView? = null
+
     }
 }
