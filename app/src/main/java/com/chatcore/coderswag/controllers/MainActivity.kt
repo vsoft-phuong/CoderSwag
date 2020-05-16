@@ -1,5 +1,6 @@
 package com.chatcore.coderswag.controllers
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -10,6 +11,7 @@ import com.chatcore.coderswag.adapters.CategoryAdapter
 import com.chatcore.coderswag.adapters.CategoryRecycleAdapter
 import com.chatcore.coderswag.models.Category
 import com.chatcore.coderswag.services.DataService
+import com.chatcore.coderswag.utilities.EXTRA_CATEGORY
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -21,7 +23,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = CategoryRecycleAdapter(this, DataService.categories)
+        adapter = CategoryRecycleAdapter(this, DataService.categories){category ->
+//            Toast.makeText(this, category.title, Toast.LENGTH_SHORT).show()
+            val productActivity = Intent(this, ProductActivity::class.java)
+            productActivity.putExtra(EXTRA_CATEGORY, category.title)
+            startActivity(productActivity)
+        }
         lvCategory.adapter = adapter
 
         val layoutManager = LinearLayoutManager(this)
