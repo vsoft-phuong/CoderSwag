@@ -3,17 +3,12 @@ package com.chatcore.coderswag.controllers
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chatcore.coderswag.R
-import com.chatcore.coderswag.adapters.CategoryAdapter
 import com.chatcore.coderswag.adapters.CategoryRecycleAdapter
-import com.chatcore.coderswag.models.Category
 import com.chatcore.coderswag.services.DataService
 import com.chatcore.coderswag.utilities.EXTRA_CATEGORY
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,11 +24,11 @@ class MainActivity : AppCompatActivity() {
             productActivity.putExtra(EXTRA_CATEGORY, category.title)
             startActivity(productActivity)
         }
-        lvCategory.adapter = adapter
+        productListView.adapter = adapter
 
         val layoutManager = LinearLayoutManager(this)
-        lvCategory.layoutManager = layoutManager
-        lvCategory.setHasFixedSize(true)
+        productListView.layoutManager = layoutManager
+        productListView.setHasFixedSize(true)
 
     }
 }
